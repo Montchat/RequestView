@@ -14,6 +14,8 @@ class RequestView: UIView {
         case Notification, Location, Camera, Photo
     }
     
+    private var _request:Request = .Notification
+    
     let request: UILabel!
     
     let visualEffectView:UIVisualEffectView!
@@ -24,6 +26,19 @@ class RequestView: UIView {
     let cancel:UIButton!
     
     func yes(sender: AnyObject) { print("yes")
+        
+        switch _request {
+        case .Notification:
+            print("notification")
+        case .Location:
+            print("location")
+        case .Camera:
+            print("camera")
+        case .Photo:
+            print("photo")
+            
+        }
+        
         UIView.animateWithDuration(0.33, animations: {
             self.alpha = 0
         }) { (Bool) in
@@ -42,6 +57,8 @@ class RequestView: UIView {
     }
     
     init(request:Request, frame:CGRect, withAnimationDuration duration: Double) {
+        
+        self._request = request
         
         let visualEffect = UIBlurEffect(style: .Light)
         
