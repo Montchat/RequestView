@@ -12,7 +12,9 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        let _ = RequestView(request: "this app is more fun with notifications. do you want to enable them to let you know when someone else likes your posts?", frame: self.view.frame, animationDuration: 0.33)
+        
     }
 
     override func didReceiveMemoryWarning() {
