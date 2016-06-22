@@ -11,7 +11,7 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBAction func trigger(sender: AnyObject) {
-        addRequestView(type: .Location)
+        addRequestView(type: .Notification) 
         
     }
     

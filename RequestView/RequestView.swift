@@ -9,7 +9,7 @@
 import UIKit
 
 class RequestView: UIView {
-
+    
     enum Request {
         case Notification, Location, Camera, Photo
     }
@@ -25,11 +25,12 @@ class RequestView: UIView {
     
     let cancel:UIButton!
     
-    func yes(sender: AnyObject) { print("yes")
+    func yes(sender: AnyObject) {
         
         switch _request {
+            
         case .Notification:
-            print("notification")
+            checkForUserPushNotificationSettings(yes:true)
         case .Location:
             print("location")
         case .Camera:
@@ -48,10 +49,24 @@ class RequestView: UIView {
     }
     
     func no(sender: AnyObject) {
-        UIView.animateWithDuration(0.33, animations: { 
+        
+        switch _request {
+            
+        case .Notification:
+            checkForUserPushNotificationSettings(yes:false)
+        case .Location:
+            print("location")
+        case .Camera:
+            print("camera")
+        case .Photo:
+            print("photo")
+            
+        }
+
+        UIView.animateWithDuration(0.33, animations: {
             self.alpha = 0
-            }) { (Bool) in
-                self.removeFromSuperview()
+        }) { (Bool) in
+            self.removeFromSuperview()
         }
         
     }
@@ -93,7 +108,7 @@ class RequestView: UIView {
         //programming request
         self.request.textColor = black
         self.request.text = text
-        self.request.numberOfLines = 0 
+        self.request.numberOfLines = 0
         self.request.textAlignment = .Center
         self.request.font = UIFont.boldSystemFontOfSize(20)
         self.request.backgroundColor = UIColor.clearColor()
@@ -132,7 +147,7 @@ class RequestView: UIView {
         }
         
         UIView.animateWithDuration(duration) { self.alpha = 1
-
+            
         }
         
     }
@@ -140,4 +155,85 @@ class RequestView: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+}
+
+
+extension RequestView {
+    
+    
+    func checkForUserPushNotificationSettings(yes yes:Bool) {
+        
+        switch yes {
+            
+        case true:
+            
+            if NSUserDefaults.standardUserDefaults().valueForKey("UserPresentedPushNotifications") == nil {
+                
+                let userDefaults = NSUserDefaults.standardUserDefaults()
+                
+                userDefaults.setValue(true, forKey: "UserPresentedPushNotifications")
+                
+                userDefaults.synchronize()
+                
+                let application = UIApplication.sharedApplication()
+                
+                if application.respondsToSelector(#selector(UIApplication.registerUserNotificationSettings(_:))) {
+                    
+                    let settings = UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
+                    application.registerUserNotificationSettings(settings)
+                    application.registerForRemoteNotifications()
+                    
+                } else { application.registerForRemoteNotificationTypes([.Alert, .Badge, .Sound])
+                    
+                }
+                
+            } else { if let userPushNotificationSettings = NSUserDefaults.standardUserDefaults().valueForKey("UserPresentedPushNotifications") as? Bool {
+                if userPushNotificationSettings == false {
+                    
+                    print("user registering for notifications") 
+                    
+                    let userDefaults = NSUserDefaults.standardUserDefaults()
+                    userDefaults.setValue(true, forKey: "UserPresentedPushNotifications")
+                    userDefaults.synchronize()
+                    
+                    let application = UIApplication.sharedApplication()
+                    
+                    if application.respondsToSelector(#selector(UIApplication.registerUserNotificationSettings(_:))) {
+                        
+                        let settings = UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
+                        application.registerUserNotificationSettings(settings)
+                        application.registerForRemoteNotifications()
+                        
+                    } else { application.registerForRemoteNotificationTypes([.Alert, .Badge, .Sound])
+                        
+                    }
+                    
+                }
+                
+                }
+            }
+        
+        case false:
+            
+            print("user has not enabled notifications yet")
+            
+            if NSUserDefaults.standardUserDefaults().valueForKey("UserPresentedPushNotifications") == nil {
+                
+                let userDefaults = NSUserDefaults.standardUserDefaults()
+                userDefaults.setValue(true, forKey: "UserPresentedPushNotifications")
+                userDefaults.synchronize()
+                
+            } else if NSUserDefaults.standardUserDefaults().valueForKey("UserPresentedPushNotifications") != nil {
+                
+                let userDefaults = NSUserDefaults.standardUserDefaults()
+                userDefaults.setValue(false, forKey: "UserPresentedPushNotifications")
+                userDefaults.synchronize()
+                
+            }
+            
+        }
+            
+    }
+    
 }
