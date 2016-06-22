@@ -16,11 +16,28 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DpU-x0-S7T">
+                                <rect key="frame" x="213" y="285" width="174" height="30"/>
+                                <color key="backgroundColor" red="0.31280763067696615" green="0.61916146595218458" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="TriggerRequestAnimation">
+                                    <color key="titleColor" red="1" green="0.97254901959999995" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="trigger:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ryj-49-ACx"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="DpU-x0-S7T" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Ms2-vF-JY9"/>
+                            <constraint firstItem="DpU-x0-S7T" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="bjP-Me-SR1"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="399" y="401"/>
         </scene>
     </scenes>
 </document>

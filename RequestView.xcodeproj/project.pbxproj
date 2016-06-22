@@ -12,7 +12,6 @@
 		DAE94D1C1D1ACA65009E6AFE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAE94D1A1D1ACA65009E6AFE /* Main.storyboard */; };
 		DAE94D1E1D1ACA65009E6AFE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAE94D1D1D1ACA65009E6AFE /* Assets.xcassets */; };
 		DAE94D211D1ACA65009E6AFE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAE94D1F1D1ACA65009E6AFE /* LaunchScreen.storyboard */; };
-		DAE94D2A1D1ACA7E009E6AFE /* RequestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAE94D281D1ACA7E009E6AFE /* RequestView.xib */; };
 		DAE94D2B1D1ACA7E009E6AFE /* RequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE94D291D1ACA7E009E6AFE /* RequestView.swift */; };
 /* End PBXBuildFile section */
 
@@ -24,7 +23,6 @@
 		DAE94D1D1D1ACA65009E6AFE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DAE94D201D1ACA65009E6AFE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DAE94D221D1ACA65009E6AFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DAE94D281D1ACA7E009E6AFE /* RequestView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RequestView.xib; sourceTree = "<group>"; };
 		DAE94D291D1ACA7E009E6AFE /* RequestView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -60,7 +58,6 @@
 			children = (
 				DAE94D161D1ACA65009E6AFE /* AppDelegate.swift */,
 				DAE94D181D1ACA65009E6AFE /* ViewController.swift */,
-				DAE94D281D1ACA7E009E6AFE /* RequestView.xib */,
 				DAE94D291D1ACA7E009E6AFE /* RequestView.swift */,
 				DAE94D1A1D1ACA65009E6AFE /* Main.storyboard */,
 				DAE94D1D1D1ACA65009E6AFE /* Assets.xcassets */,
@@ -128,7 +125,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DAE94D2A1D1ACA7E009E6AFE /* RequestView.xib in Resources */,
 				DAE94D211D1ACA65009E6AFE /* LaunchScreen.storyboard in Resources */,
 				DAE94D1E1D1ACA65009E6AFE /* Assets.xcassets in Resources */,
 				DAE94D1C1D1ACA65009E6AFE /* Main.storyboard in Resources */,
@@ -296,6 +292,7 @@
 				DAE94D271D1ACA65009E6AFE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
