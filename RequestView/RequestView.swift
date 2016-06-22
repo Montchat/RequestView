@@ -9,8 +9,10 @@
 import UIKit
 
 class RequestView: UIView {
-    
-    typealias Request = String
+
+    enum Request {
+        case Notification, Location, Camera, Photo
+    }
     
     let request: UILabel!
     
@@ -56,9 +58,24 @@ class RequestView: UIView {
         
         let black = UIColor(red: 0.21, green: 0.21, blue: 0.21, alpha: 0.90)
         
+        var text:String!
+        
+        switch request {
+            
+        case .Notification:
+            text = "This app is more fun with notifications! Would you like to be alerted when a user likes your content?"
+        case .Location:
+            text = "Would you like to enable the app to use your location while you are using it? This is important for a lot of features."
+        case .Camera:
+            text = "This app would like to access your camera to help you take pictures and videos. Would you like to access your camera now?"
+        case .Photo:
+            text = "This app would like to save photos down to your library, but first needs to be given permisssion to save your photos. Would you like to give the app permission to save media to your device?"
+            
+        }
+        
         //programming request
         self.request.textColor = black
-        self.request.text = request
+        self.request.text = text
         self.request.numberOfLines = 0 
         self.request.textAlignment = .Center
         self.request.font = UIFont.boldSystemFontOfSize(20)
