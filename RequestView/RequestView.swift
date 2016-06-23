@@ -11,7 +11,7 @@ import UIKit
 class RequestView: UIView {
     
     enum Request {
-        case Notification, Location, Camera, Photo
+        case Notification, Location, Camera, Photo, Contacts
     }
     
     private var _request:Request = .Notification
@@ -37,6 +37,8 @@ class RequestView: UIView {
             print("camera")
         case .Photo:
             print("photo")
+        case . Contacts:
+            print("contacts")
             
         }
         
@@ -60,6 +62,8 @@ class RequestView: UIView {
             print("camera")
         case .Photo:
             print("photo")
+        case .Contacts:
+            print("contacts")
             
         }
 
@@ -102,6 +106,8 @@ class RequestView: UIView {
             text = "This app would like to access your camera to help you take pictures and videos. Would you like to access your camera now?"
         case .Photo:
             text = "This app would like to save photos down to your library, but first needs to be given permisssion to save your photos. Would you like to give the app permission to save media to your device?"
+        case .Contacts:
+            text = "This app would like to help you find people on your app by accessing your contacts. Would you like to give the app permission to do so?"
             
         }
         
