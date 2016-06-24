@@ -11,7 +11,7 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBAction func trigger(sender: AnyObject) {
-        addRequestView(type: .Notification) 
+        checkIfUserHasEnabledNotifications()
         
     }
     
@@ -20,14 +20,40 @@ class ViewController: UIViewController {
         
     }
     
-    override func viewDidAppear(animated: Bool) {
-        addRequestView(type: .Notification)
-
+    func checkIfUserHasEnabledNotifications() {
+        
+        if let userAcceptedPushNotifications = NSUserDefaults.standardUserDefaults().valueForKey("UserAcceptedPushNotifications") as? Bool {
+            print("a")
+            if userAcceptedPushNotifications == false {
+                
+                addRequestView(type: .Notification)
+                
+            } else if userAcceptedPushNotifications == true {
+                print("userAcceptedPushNotifications \(userAcceptedPushNotifications)")
+            }
+            
+        } else if NSUserDefaults.standardUserDefaults().valueForKey("UserAcceptedPushNotifications") == nil {
+            print("b")
+            
+            addRequestView(type: .Notification)
+            
+            let userDefaults = NSUserDefaults.standardUserDefaults()
+            
+            userDefaults.setValue(false, forKey: "UserAcceptedPushNotifications")
+            userDefaults.synchronize()
+            
+        }
+        
     }
-
+    
+    override func viewDidAppear(animated: Bool) {
+        checkIfUserHasEnabledNotifications()
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
     }
     
     func addRequestView(type request:RequestView.Request) -> RequestView {
@@ -38,6 +64,6 @@ class ViewController: UIViewController {
         return requestView
         
     }
-
+    
 }
 

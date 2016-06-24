@@ -167,18 +167,17 @@ class RequestView: UIView {
 
 extension RequestView {
     
-    
     func checkForUserPushNotificationSettings(yes yes:Bool) {
         
         switch yes {
             
         case true:
             
-            if NSUserDefaults.standardUserDefaults().valueForKey("UserPresentedPushNotifications") == nil {
+            if NSUserDefaults.standardUserDefaults().valueForKey("UserAcceptedPushNotifications") == nil {
                 
                 let userDefaults = NSUserDefaults.standardUserDefaults()
                 
-                userDefaults.setValue(true, forKey: "UserPresentedPushNotifications")
+                userDefaults.setValue(true, forKey: "UserAcceptedPushNotifications")
                 
                 userDefaults.synchronize()
                 
@@ -194,13 +193,14 @@ extension RequestView {
                     
                 }
                 
-            } else { if let userPushNotificationSettings = NSUserDefaults.standardUserDefaults().valueForKey("UserPresentedPushNotifications") as? Bool {
+            } else { if let userPushNotificationSettings = NSUserDefaults.standardUserDefaults().valueForKey("UserAcceptedPushNotifications") as? Bool {
+                
                 if userPushNotificationSettings == false {
                     
                     print("user registering for notifications") 
                     
                     let userDefaults = NSUserDefaults.standardUserDefaults()
-                    userDefaults.setValue(true, forKey: "UserPresentedPushNotifications")
+                    userDefaults.setValue(true, forKey: "UserAcceptedPushNotifications")
                     userDefaults.synchronize()
                     
                     let application = UIApplication.sharedApplication()
@@ -224,16 +224,16 @@ extension RequestView {
             
             print("user has not enabled notifications yet")
             
-            if NSUserDefaults.standardUserDefaults().valueForKey("UserPresentedPushNotifications") == nil {
+            if NSUserDefaults.standardUserDefaults().valueForKey("UserAcceptedPushNotifications") == nil {
                 
                 let userDefaults = NSUserDefaults.standardUserDefaults()
-                userDefaults.setValue(true, forKey: "UserPresentedPushNotifications")
+                userDefaults.setValue(true, forKey: "UserAcceptedPushNotifications")
                 userDefaults.synchronize()
                 
-            } else if NSUserDefaults.standardUserDefaults().valueForKey("UserPresentedPushNotifications") != nil {
+            } else if NSUserDefaults.standardUserDefaults().valueForKey("UserAcceptedPushNotifications") != nil {
                 
                 let userDefaults = NSUserDefaults.standardUserDefaults()
-                userDefaults.setValue(false, forKey: "UserPresentedPushNotifications")
+                userDefaults.setValue(false, forKey: "UserAcceptedPushNotifications")
                 userDefaults.synchronize()
                 
             }
