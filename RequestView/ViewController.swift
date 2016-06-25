@@ -10,8 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    @IBAction func trigger(sender: AnyObject) {
-        checkIfUserHasEnabledNotifications()
+    @IBAction func trigger(sender: AnyObject) { checkIfUserHasEnabledNotifications()
         
     }
     
@@ -23,17 +22,12 @@ class ViewController: UIViewController {
     func checkIfUserHasEnabledNotifications() {
         
         if let userAcceptedPushNotifications = NSUserDefaults.standardUserDefaults().valueForKey("UserAcceptedPushNotifications") as? Bool {
-            print("a")
             if userAcceptedPushNotifications == false {
-                
                 addRequestView(type: .Notification)
                 
-            } else if userAcceptedPushNotifications == true {
-                print("userAcceptedPushNotifications \(userAcceptedPushNotifications)")
             }
             
         } else if NSUserDefaults.standardUserDefaults().valueForKey("UserAcceptedPushNotifications") == nil {
-            print("b")
             
             addRequestView(type: .Notification)
             
@@ -46,13 +40,11 @@ class ViewController: UIViewController {
         
     }
     
-    override func viewDidAppear(animated: Bool) {
-        checkIfUserHasEnabledNotifications()
+    override func viewDidAppear(animated: Bool) { checkIfUserHasEnabledNotifications()
         
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    override func didReceiveMemoryWarning() { super.didReceiveMemoryWarning()
         
     }
     
